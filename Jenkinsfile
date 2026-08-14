@@ -29,7 +29,7 @@ pipeline {
             steps {
                 dir('app') {
                     sh 'npm test'
-                    echo 'Testing GitHub webhook'
+                    
                 }
             }
         }
