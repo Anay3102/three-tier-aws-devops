@@ -58,12 +58,24 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Docker image successfully pushed to ECR!'
-        }
+    success {
+        echo 'Docker image successfully pushed to ECR!'
 
-        failure {
-            echo 'Pipeline failed.'
-        }
+        slackSend(
+            channel: '#jenkins-ci',
+            color: 'good',
+            message: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}\nDocker image successfully pushed to ECR.\nImage: ${env.IMAGE_NAME}:${env.BUILD_NUMBER}"
+        )
     }
+
+    failure {
+        echo 'Pipeline failed.'
+
+        slackSend(
+            channel: '#jenkins-ci',
+            color: 'danger',
+            message: "❌ FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}\nPipeline failed. Check Jenkins for details."
+        )
+    }
+}
 }
