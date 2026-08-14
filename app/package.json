@@ -1,0 +1,18 @@
+{
+  "name": "three-tier-node-app",
+  "version": "1.0.0",
+  "description": "Node.js application for AWS three-tier DevOps project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "prom-client": "^15.1.3"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "supertest": "^7.1.4"
+  }
+}
